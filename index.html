@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업비트 코인 차트 분석</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>업비트 코인 차트 분석</h1>
+        </header>
+        
+        <div class="search-section">
+            <div class="form-group">
+                <label for="market">마켓:</label>
+                <select id="market">
+                    <option value="KRW-BTC" selected>비트코인 (KRW-BTC)</option>
+                    <option value="KRW-ETH">이더리움 (KRW-ETH)</option>
+                    <option value="KRW-XRP">리플 (KRW-XRP)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">기준일:</label>
+                <input type="date" id="date">
+            </div>
+            <div class="form-group">
+                <label for="count">조회 기간(일):</label>
+                <input type="number" id="count" min="1" max="200" value="30">
+            </div>
+            <button id="search-btn">조회</button>
+        </div>
+        
+        <div class="summary-section">
+            <div class="coin-info">
+                <h2>코인 정보</h2>
+                <div id="coin-summary">
+                    <p>코인을 선택하고 조회 버튼을 클릭하세요.</p>
+                </div>
+            </div>
+            <div class="market-analysis">
+                <h2>시장 분석</h2>
+                <div id="market-summary">
+                    <p>코인을 선택하고 조회 버튼을 클릭하세요.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-section">
+            <div class="chart-container">
+                <h2>가격 차트</h2>
+                <canvas id="price-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>거래량 차트</h2>
+                <canvas id="volume-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>변동률 차트</h2>
+                <canvas id="change-rate-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>데이터 테이블</h2>
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>날짜</th>
+                            <th>시가</th>
+                            <th>고가</th>
+                            <th>저가</th>
+                            <th>종가</th>
+                            <th>거래량</th>
+                            <th>변동률(%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- 데이터가 여기에 동적으로 삽입됩니다 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 로딩 인디케이터 -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
